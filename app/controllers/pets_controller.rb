@@ -22,14 +22,33 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find_by(id: params[:id])
-    if !@pet
-      redirect_to pets_path
+    set_pet
+  end
+
+  def edit
+    set_pet
+  end
+
+  def update
+    set_pet
+    if @pet.update(pet_params)
+      redirect_to pet_path(@pet)
+    else
+      render :edit
     end
+
   end
 
   private
 
+  def set_pet
+
+    @pet = Pet.find_by(id: params[:id])
+    if !@pet
+      redirect_to pets_path
+    end
+
+  end
   def pet_params
     params.require(:pet).permit(:name, :species, :age)
   end

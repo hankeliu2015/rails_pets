@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pets, only: [:new, :create, :index, :show]
+  resources :pets, only: [:new, :create, :index, :show, :edit, :update]
   # get 'pets/:id', to: 'pets#show'
   # get 'pets', to: 'pets#index'
 
