@@ -6,7 +6,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.create(pet_params)
-    binding.pry
+    # binding.pry
     # byebug
     # @pet = Pet.create(name: params[:dog][:name])
 
@@ -14,6 +14,17 @@ class PetsController < ApplicationController
       redirect_to pet_path(@pet)
     else
        render :new
+    end
+  end
+
+  def index
+    @pets = Pet.all
+  end
+
+  def show
+    @pet = Pet.find_by(id: params[:id])
+    if !@pet
+      redirect_to pets_path
     end
   end
 
