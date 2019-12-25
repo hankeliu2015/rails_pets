@@ -1,4 +1,4 @@
 <h3>List All Pets</h3>
 <% @pets.each do |pet| %>
-  <%= pet.id %>. <%= pet.name %>
+  <%= pet.id %>. <%= link_to "#{pet.name}", pet_path(pet) %>
 <% end %>
